@@ -1,10 +1,3 @@
-import styled from 'none';
-
-const StyledPage = styled.div`
-  .page {
-  }
-`;
-
 export function Index() {
   /*
    * Replace the elements below with your own.
@@ -12,7 +5,7 @@ export function Index() {
    * Note: The corresponding styles are in the ./index.none file.
    */
   return (
-    <StyledPage>
+    <div>
       <div className="wrapper">
         <div className="container">
           <div id="welcome">
@@ -416,7 +409,7 @@ export function Index() {
           </p>
         </div>
       </div>
-    </StyledPage>
+    </div>
   );
 }
 
