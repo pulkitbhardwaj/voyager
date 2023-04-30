@@ -1,0 +1,69 @@
+{
+  "name": "goatcx-website",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/goatcx/website",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/goatcx/website",
+        "outputPath": "dist/apps/goatcx/website"
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/goatcx/website"
+        },
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "goatcx-website:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "goatcx-website:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "goatcx-website:build:production",
+          "dev": false
+        }
+      }
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "options": {
+        "buildTarget": "goatcx-website:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/goatcx/website/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/goatcx/website/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": ["goatcx", "website", "nextjs", "react", "ui"]
+}
