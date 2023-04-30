@@ -1,15 +1,7 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "npmScope": "voyager",
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx-cloud",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
-        "accessToken": "MzhjZGZkYTItMWE5Mi00Njk0LTgwMWYtZmY2MjA0MmQ0YmE0fHJlYWQtd3JpdGU="
-      }
-    }
-  },
+
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
